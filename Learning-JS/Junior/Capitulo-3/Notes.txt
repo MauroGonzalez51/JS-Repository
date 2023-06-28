@@ -1,0 +1,22 @@
+# Abstraccion
+
+Hacer lo menos complejo el objecto
+Reducirlo a sus componentes basicos
+=> Solo lo necesario
+
+# Modularidad
+
+Tener un problema gigante "Fragmentandolo"
+Resolviendolo por pedazos
+
+# Encapsulamiento
+
+Todos los datos sean privados, para
+que no se pueda acceder a la informacion de manera tan
+sencilla
+
+# Polimorfismo
+
+Mismos metodos haciendo cosas diferentes
+Dependiendo del objeto -> Herencia
+
