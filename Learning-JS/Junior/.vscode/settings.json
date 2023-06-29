@@ -2,5 +2,4 @@
     "workbench.colorTheme": "Horizon Italic",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "workbench.iconTheme": "eq-material-theme-icons-palenight",
-    "html.autoCreateQuotes": false
 }
