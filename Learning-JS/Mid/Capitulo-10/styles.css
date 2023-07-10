@@ -1,0 +1,113 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ffffff2c;
+}
+
+.form__container {
+    border: 1px solid rgb(35, 163, 206);
+    outline: 1px solid rgb(35, 163, 206, 0.5);
+    outline-offset: 15px;
+    padding: 25px;
+    transition: outline-color 0.4s ease-in;
+    width: max-content;
+}
+
+.form {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.input {
+    margin: 15px 0;
+    outline: none !important;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(35, 163, 206, 0.9);
+    width: 100%;
+    flex-grow: 1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form__container:focus-within {
+    outline-color: #1b67cc;
+}
+
+h2 {
+    letter-spacing: 0.5px;
+}
+
+.btn {
+    padding: 10px;
+    width: 50%;
+    place-self: center;
+    margin-top: 5px;
+    border-radius: 5px;
+    background: #3c70dfea;
+    color: #fff;
+    border: 1px solid transparent;
+    transition: border-color .5s linear;
+}
+
+.form__container:focus-within .btn {
+    border-color: #1a54d1ea
+}
+
+.clicked {
+    transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+}
+
+.result__container {
+    border: 1px solid rgb(35, 163, 206, 0.9);
+    padding: 12px;
+    width: fit-content;
+    text-align: center;
+    color: #fff;
+    border: transparent;
+    opacity: 0;
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+    border-radius: 5px;
+    outline-offset: 4px;
+    outline: 1px solid transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 50px;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.success {
+    background: #2dce0d;
+    outline-color: #2dce0d
+}
+
+.failure {
+    background: rgb(218, 20, 20);
+    outline-color: rgb(218, 20, 20)
+}
+
+.visible {
+    opacity: 1;
+}
