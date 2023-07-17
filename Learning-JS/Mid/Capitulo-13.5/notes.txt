@@ -1,0 +1,4 @@
+Cargar primero los "Modulos", luego el archivo "Global"
+
+Al momento de utilizar la etiqueta <script />
+
