@@ -1,0 +1,101 @@
+:root {
+    --bodyBackgroundColor: #454d5c;
+
+    --subjectsContainerBorderColor: #356cdb;
+
+    --subjectBackgroundColor: #356cdb;
+
+    --subjectFontColor: #fff;
+
+    --subjectGradeFontColor: #2853a8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.body {
+    color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--bodyBackgroundColor);
+}
+
+.subjects__container {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid var(--subjectsContainerBorderColor);
+    border-radius: 0.5rem;
+    flex-grow: 0.5;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+.subject {
+    background: var(--subjectBackgroundColor);
+    color: var(--subjectFontColor);
+    padding: 0.938rem;
+    margin: 10px;
+    border-radius: 0.5rem;
+    flex-basis: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.subject div {
+    padding: 0.65rem;
+    text-align: center;
+    border-radius: 0.5rem;
+}
+
+.subject .subject__grade {
+    padding: 0.7rem;
+}
+
+.subject__grade {
+    background: #e4dcdc;
+    color: var(--subjectGradeFontColor);
+    font-weight: bold;
+    flex-basis: 50px;
+}
+
+.visible {
+    opacity: 1;
+}
+
+@media (max-width: 300px) {
+    .body {
+        padding: 0.7rem;
+        overflow-y: auto;
+    }
+
+    .subjects__container {
+        width: 100%;
+        max-height: 100vh;
+        border-color: transparent;
+    }
+
+    .subject {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subject__grade {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
