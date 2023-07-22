@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #060b23;
+}
+
+.form__field {
+    /* ! Each form-field must be positioned */
+    position: relative;
+}
+
+.form__field > .form__field-input {
+    /* ! The size of the input can be variable */
+    width: 350px;
+    height: 60px;
+
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 0 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+}
+
+.form__field > .form__field-label {
+    /* + Seems like no matter the input size the label remains on the same place */
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 19px;
+    pointer-events: none;
+    transition: all .3s 
+}
+
+.form__field-input:is(:focus, :valid) ~ .form__field-label {
+	top: 0;
+	left: 15px;
+    font-size: 16px;
+	padding: 0 2px;
+	background-color: #060b23;
+}
+
+
