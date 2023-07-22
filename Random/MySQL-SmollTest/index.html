@@ -7,32 +7,39 @@
         <title>Document</title>
     </head>
     <body class="body">
-        <div class="form-container">
+        <!-- * This slowly turned into a fetch practice :P -->
+        <div class="form__container">
             <form class="form">
-                <input
-                    type="text"
-                    placeholder="Nombre"
-                    id="name"
-                    class="input"
-                    autocomplete="off"
-                    required=""
-                />
-                <input
-                    type="text"
-                    placeholder="Edad"
-                    id="age"
-                    class="input"
-                    autocomplete="off"
-                    required=""
-                />
-                <input
-                    type="text"
-                    placeholder="Email"
-                    id="email"
-                    class="input"
-                    autocomplete="off"
-                    required=""
-                />
+                <div class="form__field">
+                    <input
+                        type="text"
+                        class="form__field-input input"
+                        id="name"
+                        required
+                        autocomplete="off"
+                    />
+                    <label for="text" class="form__field-label">Nombre</label>
+                </div>
+                <div class="form__field">
+                    <input
+                        type="text"
+                        class="form__field-input input"
+                        id="age"
+                        required
+                        autocomplete="off"
+                    />
+                    <label for="text" class="form__field-label">Edad</label>
+                </div>
+                <div class="form__field">
+                    <input
+                        type="text"
+                        class="form__field-input input"
+                        id="email"
+                        required
+                        autocomplete="off"
+                    />
+                    <label for="text" class="form__field-label">Email</label>
+                </div>
 
                 <button class="form-button">Enviar</button>
             </form>
