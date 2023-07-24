@@ -32,22 +32,30 @@
     outline: none;
 }
 
-.form__field > .form__field-label {
+/*
+    ! Debido a la especificidad, el selector del label solo puede ser de clase
+
+    + para que asi pueda hacerle efecto la clase .label-animation que esta mas debajo
+
+    * Aunque todo esto se soluciona haciendo uso de un ID
+*/
+
+.form__field-label {
     /* + Seems like no matter the input size the label remains on the same place */
     position: absolute;
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
     color: #fff;
-    font-size: 19px;
+    font-size: 1.4rem;
     pointer-events: none;
     transition: all .3s 
 }
 
-.form__field-input:is(:focus, :valid) ~ .form__field-label {
+#label-animation {
 	top: 0;
-	left: 15px;
-    font-size: 16px;
+	left: 1rem;
+    font-size: 1.2rem;
 	padding: 0 2px;
 	background-color: #060b23;
 }

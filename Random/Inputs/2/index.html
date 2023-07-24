@@ -12,5 +12,21 @@
             <input type="text" required class="form__field-input" />
             <label for="text" class="form__field-label">Enter email</label>
         </div>
+
+        <script>
+            const input = document.querySelector(".form__field-input");
+
+            input.addEventListener("focus", () => {
+                input.nextElementSibling.id = "label-animation";
+
+                // input.nextElementSibling.classList.add("label-animation");
+            });
+
+            input.addEventListener("blur", () => {
+                if (!input.value) input.nextElementSibling.id = "";
+
+                // input.nextElementSibling.classList.remove("label-animation");
+            });
+        </script>
     </body>
 </html>
