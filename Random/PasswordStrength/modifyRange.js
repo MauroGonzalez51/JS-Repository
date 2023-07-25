@@ -1,33 +1,42 @@
 const resultRange = document.getElementById("result__input");
+
 const resultLabel = document.getElementById("result__label");
+let { textContent } = resultLabel;
 
-const modifyRange = (options, input, previousClassLabel) => {
-    const { color = "#000", label = "", value, classLabel } = options;
+const resetDefault = ({ color = "#000", background = "#000", classLabel }) => {
+    resultRange.style.setProperty("--value", 0);
+    resultRange.classList.add("default");
+    resultRange.classList.remove(classLabel);
+    
+    resultLabel.style.color = color;
+    resultLabel.textContent = textContent;
+};
 
-    if (input.value.length) {
-        resultLabel.textContent = label;
-        resultLabel.style.color = color;
-
-        resultRange.style.setProperty("--value", value);
-
-        if (previousClassLabel) {
-            resultRange.classList.remove(previousClassLabel);
-        }
-        
-        resultRange.classList.add(classLabel);
-    } else {
-        resultLabel.textContent = "Waiting for input ...";
-        resultLabel.classList.add("default");
-        resultLabel.style.color = color;
-
-        resultRange.style.setProperty("--value", 0);
-
-        if (previousClassLabel) {
-            resultRange.classList.remove(previousClassLabel);
-        }
+const modifyRange = (options, input, previousOptions) => {
+    if (!input.value) {
+        let { classLabel } = previousOptions;
+        resetDefault({ classLabel });
+        return;
     }
 
-    return classLabel; 
+    resultRange.classList.remove(previousOptions.classLabel);
+    resultRange.classList.remove("default");
+
+    const { color, label, classLabel, value } = options;
+
+    // *
+    resultRange.style.setProperty("--value", value);
+
+    // *
+    resultRange.classList.add(classLabel);
+
+    // *
+    resultLabel.style.color = color;
+
+    // *
+    resultLabel.textContent = label;
+
+    return value;
 };
 
 export default modifyRange;

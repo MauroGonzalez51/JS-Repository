@@ -6,11 +6,14 @@ import {
     verifyLength,
     containsSymbols,
     containsNumbers,
+    containsOnlySpaces,
 } from "./cases.js";
 
 import findByValue from "./findByValue.js";
 
 import modifyRange from "./modifyRange.js";
+
+import { valuePerRule } from "./passwordStrength.js";
 
 const MIN_LENGTH = 10;
 
@@ -35,24 +38,25 @@ iconContainer.addEventListener("click", (event) => {
     input.focus();
 });
 
-let currentClassLabel;
+let previousValue;
 
 input.addEventListener("input", (event) => {
     const verificationData = [
-        { verifyFn: containsUppercase, increment: 20 },
+        { verifyFn: containsUppercase },
         { verifyFn: containsLowercase, increment: 20 },
-        { verifyFn: (value) => verifyLength(value, MIN_LENGTH), increment: 20 },
-        { verifyFn: containsSymbols, increment: 20 },
-        { verifyFn: containsNumbers, increment: 20 },
+        { verifyFn: (value) => verifyLength(value, MIN_LENGTH) },
+        { verifyFn: containsSymbols },
+        { verifyFn: containsNumbers },
+        { verifyFn: (value) => !containsOnlySpaces(value) },
     ];
 
-    let value = verificationData.reduce((acc, { verifyFn, increment }) => {
-        return verifyFn(input.value) ? (acc += increment) : acc;
+    let value = verificationData.reduce((acc, { verifyFn }) => {
+        return verifyFn(input.value) ? (acc += valuePerRule) : acc;
     }, 0);
 
-    currentClassLabel = modifyRange(
-        findByValue(value) || {},
+    previousValue = modifyRange(
+        findByValue(value),
         event.target,
-        currentClassLabel
+        findByValue(previousValue)
     );
 });

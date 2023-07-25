@@ -31,10 +31,16 @@ const containsNumbers = (string) => {
     return regex.test(string);
 };
 
+const containsOnlySpaces = (string) => {
+    const regex = /^\s*$/;
+    return regex.test(string);
+};
+
 export {
     containsUppercase,
     containsLowercase,
     verifyLength,
     containsSymbols,
     containsNumbers,
+    containsOnlySpaces
 };

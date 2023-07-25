@@ -1,7 +1,14 @@
-import passwordStrength from "./passwordStrength.js";
+import { modifiedPasswordStrength } from "./passwordStrength.js";
 
-const findByValue = (value) => {
-    return Object.values(passwordStrength).find((item) => item.value === value);
+const findClosestValue = (value) => {
+    return Object.values(modifiedPasswordStrength).reduce(
+        (closest, current) => {
+            return Math.abs(current.value - value) <
+                Math.abs(closest.value - value)
+                ? current
+                : closest;
+        }
+    );
 };
 
-export default findByValue
+export default findClosestValue;

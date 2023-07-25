@@ -142,6 +142,11 @@ input[type="range"]::-webkit-slider-thumb {
     background: #e7f209;
 }
 
+.light-green::before {
+    content: "";
+    background: #b8f658;
+}
+
 .green::before {
     content: "";
     background: #52e929;
@@ -150,4 +155,9 @@ input[type="range"]::-webkit-slider-thumb {
 .strong-green::before {
     content: "";
     background: #0eef18;
+}
+
+.default::before {
+    content: "";
+    background: #ccc;
 }
