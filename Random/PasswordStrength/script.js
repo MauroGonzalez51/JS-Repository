@@ -43,7 +43,7 @@ let previousValue;
 input.addEventListener("input", (event) => {
     const verificationData = [
         { verifyFn: containsUppercase },
-        { verifyFn: containsLowercase, increment: 20 },
+        { verifyFn: containsLowercase },
         { verifyFn: (value) => verifyLength(value, MIN_LENGTH) },
         { verifyFn: containsSymbols },
         { verifyFn: containsNumbers },
