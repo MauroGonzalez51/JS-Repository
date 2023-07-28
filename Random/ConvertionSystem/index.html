@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body class="body">
+        <div class="main__container">
+            <div class="row">
+                <form class="form">
+                    <div class="form__field">
+                        <input
+                            type="text"
+                            id="initial__value"
+                            class="form__field-input input"
+                            autocomplete="off"
+                        />
+                        <label for="text" class="form__field-label"
+                            >Ingrese un valor</label
+                        >
+                    </div>
+
+                    <select name="select" id="initial__units" class="select">
+                        <!-- <option value=""></option> Inserted via JS -->
+                    </select>
+                </form>
+
+                <div class="result-container">
+                    <div class="form__field">
+                        <input
+                            type="text"
+                            id="target__value"
+                            class="form__field-input input"
+                            autocomplete="off"
+                        />
+                        <label for="text" class="form__field-label always-active"
+                            >Resultado</label
+                        >
+                    </div>
+
+                    <select name="select" id="target__units" class="select">
+                        <!-- <option value=""></option> Inserted via JS -->
+                    </select>
+                </div>
+            </div>
+
+            <button class="button">Convetir unidades</button>
+        </div>
+
+        <script type="text/javascript">
+            let allInputs = document.querySelectorAll(
+                ".form__field > .form__field-input"
+            );
+
+            allInputs.forEach((element) => {
+                element.addEventListener("focus", () => {
+                    element.nextElementSibling.classList.add("label-animation");
+                });
+
+                element.addEventListener("blur", () => {
+                    if (!element.value)
+                        element.nextElementSibling.classList.remove(
+                            "label-animation"
+                        );
+                });
+            });
+        </script>
+
+        <script type="module" src="script.js"></script>
+
+    </body>
+</html>
