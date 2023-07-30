@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body class="body">
+        <div class="input-group">
+            <input type="text" class="input-group__input" />
+            <label for="text" class="input-group__label"
+                >Ingrese un valor</label
+            >
+        </div>
+
+        <script>
+            let inputGroupsAll = document.querySelectorAll(".input-group");
+
+            inputGroupsAll.forEach((group) => {
+                let input = Array.from(group.children).shift();
+
+                input.addEventListener("focus", () => {
+                    input.nextElementSibling.classList.add("label-animation");
+                });
+
+                input.addEventListener("blur", () => {
+                    if (!input.value)
+                        input.nextElementSibling.classList.remove(
+                            "label-animation"
+                        );
+                });
+            });
+        </script>
+    </body>
+</html>

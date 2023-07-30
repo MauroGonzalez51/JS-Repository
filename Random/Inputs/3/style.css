@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=JetBrains+Mono:wght@100;400&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono";
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    max-width: 400px;
+    height: 80px;
+}
+
+.input-group__input {
+    padding: 0.4rem 0.8rem;
+    outline: none !important;
+    width: 100%;
+    border: 2px solid #25e;
+    border-radius: 0.4rem;
+    font-size: 1.5rem;
+}
+
+.input-group__label {
+    position: absolute;
+    pointer-events: none;
+    left: 1rem;
+    top: 50%;
+    font-size: 1.5rem;
+    transform: translateY(-50%);
+    transition: 0.3s;
+    letter-spacing: 1.2px;
+}
+
+.label-animation {
+    top: 0;
+    left: 1rem;
+    padding: 0.2rem .4rem;
+    font-size: 1rem;
+    background: #fff;
+}
+
