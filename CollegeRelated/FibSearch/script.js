@@ -1,4 +1,4 @@
-const NUMBER_TO_SEARCH = 45;
+const NUMBER_TO_SEARCH = Math.floor(Math.random() * 255);
 
 const fibonacciSearch = (arr, x) => {
     const { length } = arr;
@@ -76,7 +76,7 @@ const bubbleSort = (array) => {
 
 /**
  * :P
- * 
+ *
  */
 
 const sortUsingSort = (array) => {
