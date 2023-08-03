@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=JetBrains+Mono:wght@100;400&display=swap");
+
+:root {
+    --darkBlue: #2c4acf;
+    --slateBlue: #139cdb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "JetBrains Mono", system-ui;
+}
+
+.body {
+    display: flex;
+    min-height: 100dvh;
+}
+
+.main-container {
+    width: 100%;
+}
+
+.form-container {
+    margin: 1rem;
+    padding: 1rem 0.8rem;
+
+    background: rgb(177, 188, 244);
+    background: linear-gradient(
+        0deg,
+        rgba(177, 188, 244, 1) 0%,
+        rgba(20, 32, 199, 0.923406862745098) 100%
+    );
+}
+
+.form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.form-field {
+    display: flex;
+    position: relative;
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+.form-field__input {
+    padding: 0.4rem 0.8rem;
+    outline: none !important;
+    height: 3rem;
+    font-size: 1.2rem;
+    width: 100%;
+    border-radius: 0.8rem;
+    border: 2px solid var(--darkBlue)
+}
+
+.form-field__label {
+    position: absolute;
+    top: 50%;
+    left: 0.9rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.label-animation {
+    top: 0.2rem;
+    left: 0.6rem;
+    padding: 0.1rem 0.4rem;
+    background: #29e;
+    border-radius: 0.8rem;
+    color: #fff;
+}
+
+.form-field__select-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.1rem;
+    height: 3rem;
+    padding: 0.4rem 0.8rem;
+    background: #fff;
+    border-radius: 0.8rem;
+    border: 2px solid var(--darkBlue);
+}
+
+.select {
+    font-size: 0.8rem;
+    color: #000;
+}
+
+.button {
+    text-transform: uppercase;
+    height: 4.04rem;
+    background: var(--slateBlue);
+    border: 2px solid #fff;
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.8rem;
+    flex-grow: 1;
+}
+
+/* #submit {
+} */

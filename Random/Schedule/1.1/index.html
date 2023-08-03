@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body class="body">
+        <div class="main-container">
+            <div class="form-container">
+                <form action="" class="form">
+                    <div class="form-field">
+                        <input
+                            type="text"
+                            class="form-field__input"
+                            id="subjectName"
+                        />
+                        <label for="" class="form-field__label"
+                            >Nombre Asignatura</label
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <input type="text" class="form-field__input" id="NRC" />
+                        <label for="" class="form-field__label">NRC</label>
+                    </div>
+
+                    <div class="form-field form-field__select-container">
+                        <label for="text">Hora Inicio</label>
+
+                        <select name="select" class="select hour" id="hourStart">
+
+                        </select>
+                    </div>
+
+                    <div class="form-field form-field__select-container">
+                        <label for="text">Hora Fin</label>
+
+                        <select name="select" class="select hour" id="hourEnd">
+                            <!-- <option value=""></option> -->
+                        </select>
+                    </div>
+
+                    <button class="button" id="submit">Submit</button>
+                </form>
+            </div>
+
+            <div class="result">
+                <table class="table"></table>
+            </div>
+        </div>
+
+        <script>
+            let formFieldAll = document.querySelectorAll(".form-field");
+
+            formFieldAll.forEach((formField) => {
+                const [input, label] = formField.children;
+
+                input.addEventListener("focus", () => {
+                    label.classList.add("label-animation");
+                });
+
+                input.addEventListener("blur", () => {
+                    if (!input.value) label.classList.remove("label-animation");
+                });
+            });
+        </script>
+
+        <script type="module" src="script.js"></script>
+    </body>
+</html>
