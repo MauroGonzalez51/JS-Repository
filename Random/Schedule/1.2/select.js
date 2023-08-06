@@ -29,10 +29,11 @@ const timeStamps = ({ hourStart = 7, hourEnd = 7, start = 0 }) => {
 
 // ! ---------------------------------------------------------------------------|>
 
-const createOptionElement = ({ timeStamp, classTimeStamp }) => {
+const createOptionElement = ({ timeStamp, classTimeStamp, position }) => {
     const option = document.createElement("option");
     option.value = classTimeStamp;
     option.textContent = timeStamp;
+    option.setAttribute("data-position", position);
 
     return option;
 };
@@ -41,24 +42,61 @@ const initialValues = () => {
     selects.forEach((select) => {
         const fragment = document.createDocumentFragment();
 
-        const data = Array.from({ length: ROWS }, (value, index) => {
+        Array.from({ length: ROWS }, (_, index) => {
             return timeStamps({
                 hourStart: index + 7,
                 hourEnd: index + 7,
             });
-        });
-
-        data.map(({ timeStamp, classTimeStamp }) => {
-            return createOptionElement({
-                timeStamp: timeStamp,
-                classTimeStamp: classTimeStamp,
-            });
-        }).forEach((option) => fragment.appendChild(option));
+        })
+            .map(({ timeStamp, classTimeStamp, position }) => {
+                return createOptionElement({
+                    timeStamp: timeStamp,
+                    classTimeStamp: classTimeStamp,
+                    position: position,
+                });
+            })
+            .forEach((option) => fragment.appendChild(option));
 
         select.appendChild(fragment);
     });
 };
 
 // ! ---------------------------------------------------------------------------|>
+
+const [hourStart, hourEnd] = Array.from(selects);
+
+const dinamicValues = (element, positionStart) => {
+    const fragment = document.createDocumentFragment();
+
+    positionStart = parseInt(positionStart);
+
+    Array.from(element.children).forEach((children) =>
+        element.removeChild(children)
+    );
+
+    Array.from({ length: ROWS - positionStart - 1 }, (_, index) => {
+        return timeStamps({
+            hourStart: index + 7 + positionStart + 1,
+            hourEnd: index + 7 + positionStart + 1,
+        });
+    })
+        .map(({ timeStamp, classTimeStamp, position }) => {
+            return createOptionElement({
+                timeStamp: timeStamp,
+                classTimeStamp: classTimeStamp,
+                position: position,
+            });
+        })
+        .forEach((option) => fragment.appendChild(option));
+
+    element.appendChild(fragment);
+};
+
+hourStart.addEventListener("change", (event) => {
+    const position =
+        event.target.selectedOptions[0].getAttribute("data-position");
+
+    dinamicValues(hourEnd, position);
+});
 
 export { initialValues };
