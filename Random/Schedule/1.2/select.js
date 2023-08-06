@@ -99,4 +99,4 @@ hourStart.addEventListener("change", (event) => {
     dinamicValues(hourEnd, position);
 });
 
-export { initialValues };
+export { initialValues, timeStamps, ROWS };
