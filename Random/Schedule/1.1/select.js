@@ -1,6 +1,29 @@
 const selectsHours = document.querySelectorAll(".select.hour");
+const selectDay = document.getElementById("day");
 
 const ROWS = 12;
+
+const DAYS_OF_THE_WEEK = {
+    ES: [
+        "lunes",
+        "martes",
+        "miercoles",
+        "jueves",
+        "viernes",
+        "sabado",
+        "domingo",
+    ],
+
+    EN: [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday",
+    ],
+};
 
 const replaceAll = (string, initial, newValue) => {
     return string.replaceAll(initial, newValue);
@@ -10,7 +33,7 @@ const replaceAll = (string, initial, newValue) => {
 
 /**
  * * Creating the Elements [HOURS]
- * 
+ *
  */
 
 const generateTimeStamps = ({ rows = ROWS, start = 0 }) => {
@@ -21,6 +44,11 @@ const generateTimeStamps = ({ rows = ROWS, start = 0 }) => {
 
         return {
             timeStamp: `${hourStart}-${hourEnd}`,
+            replacedTimeStamp: `${replaceAll(
+                `${hourStart}-${hourEnd}`,
+                ":",
+                "-"
+            )}`,
         };
     });
 };
@@ -29,14 +57,12 @@ const generateElements = (select, timeStamps) => {
     const fragment = document.createDocumentFragment();
 
     Object.values(timeStamps)
-        .map(({ timeStamp }, index) => {
+        .map(({ timeStamp, replacedTimeStamp }, index) => {
             const option = document.createElement("option");
-            const replacedTimeStamp = replaceAll(timeStamp, ":", "-");
 
             option.textContent = timeStamp;
-            option.classList.add(replacedTimeStamp);
             option.value = replacedTimeStamp;
-            option.setAttribute("data-position", index + 1);
+            option.setAttribute("data-position", index);
 
             return option;
         })
@@ -49,21 +75,37 @@ const generateElements = (select, timeStamps) => {
 
 /**
  * * Creating the Elements [WEEK]
- * 
+ *
  */
+
+const createWeekElements = () => {
+    const { ES, EN } = DAYS_OF_THE_WEEK;
+
+    const fragment = document.createDocumentFragment();
+
+    EN.map((value, index) => {
+        const option = document.createElement("option");
+        option.textContent = ES[index];
+        option.value = value;
+
+        return option;
+    }).forEach((element) => fragment.appendChild(element));
+
+    selectDay.appendChild(fragment);
+};
 
 // ! ----------------------------------------------------------------------------------|>
 
 /**
  * * Generating values (option) and inserting them
- * 
+ *
  * @param {element} HTMLOptionElement
  * This is the one to remove the old ones and insert them later
- * 
+ *
  * @param {rowStart} number
  * Each (option) has a "data-position" Attribute, based on that it generates
  * the new values
- * 
+ *
  */
 
 const generateInitialValues = () => {
@@ -72,45 +114,12 @@ const generateInitialValues = () => {
     });
 };
 
-const generateDinamicValues = (element, rowStart) => {
-    rowStart = parseInt(rowStart);
-
-    Array.from(element.children).forEach((child) => element.removeChild(child));
-
-    generateElements(
-        element,
-        generateTimeStamps({ rows: ROWS - rowStart, start: rowStart })
-    );
-};
-
 // ! ----------------------------------------------------------------------------------|>
 
-/**
- * * Events [...]
- * 
- * @param {event} event 
- */
-
-const handleChange = (event) => {
-    const elementID = event.target.id === "hourStart" ? "hourEnd" : "hourStart";
-    const secondSelect = document.getElementById(elementID);
-
-    event.target.removeEventListener("change", handleChange);
-
-    const selectedOption = event.target.selectedOptions[0];
-
-    generateDinamicValues(
-        secondSelect,
-        selectedOption.getAttribute("data-position")
-    );
-
-    secondSelect.removeEventListener("change", handleChange);
+export {
+    generateInitialValues,
+    createWeekElements,
+    generateTimeStamps,
+    DAYS_OF_THE_WEEK,
+    replaceAll,
 };
-
-selectsHours.forEach((select) => {
-    select.addEventListener("change", handleChange);
-});
-
-// ! ----------------------------------------------------------------------------------|>
-
-export { generateInitialValues };

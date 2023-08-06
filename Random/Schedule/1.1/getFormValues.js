@@ -10,7 +10,20 @@ const getFormValuesById = (form) => {
         Array.from(selects).map((select) => [select.id, select.value])
     );
 
-    return { ...inputValues, ...selectValues };
+    const selectedHourStart = document
+        .getElementById("hourStart")
+        .selectedOptions[0].getAttribute("data-position");
+        
+    const selectedHourEnd = document
+        .getElementById("hourEnd")
+        .selectedOptions[0].getAttribute("data-position");
+
+    return {
+        ...inputValues,
+        ...selectValues,
+        selectedHourStart,
+        selectedHourEnd,
+    };
 };
 
 export { getFormValuesById };

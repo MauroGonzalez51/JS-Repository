@@ -1,3 +1,5 @@
+const lENGTH = 7;
+
 const getAllStorageData = () => {
     const keys = Object.keys(localStorage);
 
@@ -7,5 +9,13 @@ const getAllStorageData = () => {
     });
 };
 
+const sendToLocalStorage = (data) => {
+    const key = Array.from(
+        { length: lENGTH },
+        (value) => (value = Math.floor(Math.random() * 9))
+    ).join("");
 
-export { getAllStorageData };
+    window.localStorage.setItem(key, JSON.stringify({ ...data, key: key }));
+};
+
+export { getAllStorageData, sendToLocalStorage };
