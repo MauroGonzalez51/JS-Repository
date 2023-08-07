@@ -3,6 +3,8 @@ import {
     removeItemFromLocalStorage,
 } from "./localStorage.js";
 
+import { initialTable } from "./table.js";
+
 const table = document.querySelector(".table");
 
 const selectCell = ({ daySelect, hourLabel }) => {
@@ -35,8 +37,12 @@ const insertData = (element, { ...args }) => {
 
     container.addEventListener("click", (event) => {
         const key = event.target.parentElement.getAttribute("data-key");
+
+        if (!window.confirm("¿Quieres elimiar este elemento?")) return;
+
         removeItemFromLocalStorage(key);
-        window.location.reload();
+        
+        initialTable();
     });
 };
 

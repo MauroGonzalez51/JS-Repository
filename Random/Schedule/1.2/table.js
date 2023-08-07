@@ -91,8 +91,12 @@ const tableBody = () => {
 };
 
 const initialTable = () => {
+    Array.from(table.children).forEach((children) =>
+        table.removeChild(children)
+    );
+
     tableHeader();
-    
+
     tableBody();
 
     table.parentElement.classList.add("visible");

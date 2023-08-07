@@ -19,6 +19,12 @@ form.addEventListener("submit", (event) => {
 
     const data = getFormValues(event.target);
 
+    const hasEmptyValue = Object.values(data).some((value) => {
+        return value === undefined || value === null || value.trim() === "";
+    });
+
+    if (hasEmptyValue) return;
+
     const hourLabels = selectRange(data).map(({ classTimeStamp }) => {
         return {
             hourLabel: classTimeStamp,
@@ -48,5 +54,5 @@ generateTableBtn.addEventListener("click", () => {
 
 clearLocalStorageBtn.addEventListener("click", () => {
     clearLocalStorage();
-    window.location.reload();
+    initialTable();
 });
