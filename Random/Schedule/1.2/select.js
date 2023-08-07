@@ -53,9 +53,9 @@ const initialValues = () => {
         })
             .map(({ timeStamp, classTimeStamp, position }) => {
                 return createOptionElement({
-                    timeStamp: timeStamp,
-                    classTimeStamp: classTimeStamp,
-                    position: position,
+                    timeStamp,
+                    classTimeStamp,
+                    position,
                 });
             })
             .forEach((option) => fragment.appendChild(option));
@@ -101,9 +101,9 @@ const dinamicValues = (element, positionStart) => {
     })
         .map(({ timeStamp, classTimeStamp, position }) => {
             return createOptionElement({
-                timeStamp: timeStamp,
-                classTimeStamp: classTimeStamp,
-                position: position,
+                timeStamp,
+                classTimeStamp,
+                position,
             });
         })
         .forEach((option) => fragment.appendChild(option));

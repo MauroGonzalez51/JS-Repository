@@ -9,6 +9,22 @@
         <div class="main-container">
             <div class="form-container">
                 <form action="" class="form">
+                    <div class="form-field">
+                        <input
+                            type="text"
+                            id="subject"
+                            class="form-field__input"
+                        />
+                        <label for="text" class="form-field__label"
+                            >Materia</label
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <input type="text" id="NRC" class="form-field__input" />
+                        <label for="text" class="form-field__label">NRC</label>
+                    </div>
+
                     <div class="form-field select-container">
                         <label for="text">Valor</label>
                         <select
@@ -36,8 +52,24 @@
                         ></select>
                     </div>
 
-                    <button>Submit</button>
+                    <div class="form-field">
+                        <input
+                            type="text"
+                            id="classroom"
+                            class="form-field__input"
+                        />
+                        <label for="text" class="form-field__label"
+                            >salon</label
+                        >
+                    </div>
+
+                    <button class="button" id="submit">Submit</button>
                 </form>
+
+                <button class="button" id="generateTable">Generar tabla</button>
+                <button class="button" id="clearLocalStorage">
+                    Limpiar Local Storage
+                </button>
             </div>
 
             <div class="result">

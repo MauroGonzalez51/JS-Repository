@@ -3,9 +3,12 @@ import { initialValues } from "./select.js";
 import { selectRange } from "./selectRange.js";
 import { initialTable } from "./table.js";
 import { createElements } from "./elements.js";
-import { sendToLocalStorage } from "./localStorage.js";
+import { sendToLocalStorage, clearLocalStorage } from "./localStorage.js";
 
 const form = document.querySelector(".form");
+
+const generateTableBtn = document.getElementById("generateTable");
+const clearLocalStorageBtn = document.getElementById("clearLocalStorage");
 
 /**
  * TODO
@@ -14,6 +17,10 @@ const form = document.querySelector(".form");
  * * create the elements in the table
  *
  */
+
+const clearInputs = (form) => {
+    form.querySelectorAll("input").forEach((element) => (element.value = ""));
+};
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -32,11 +39,22 @@ form.addEventListener("submit", (event) => {
         sendToLocalStorage({ ...rest, hourLabel });
     });
 
-    // createElements();
+    initialTable();
+    createElements();
+
+    clearInputs(form);
 });
 
 window.addEventListener("load", () => {
     initialValues();
+});
+
+generateTableBtn.addEventListener("click", () => {
     initialTable();
-    // createElements();
+    createElements();
+});
+
+clearLocalStorageBtn.addEventListener("click", () => {
+    clearLocalStorage();
+    window.location.reload();
 });

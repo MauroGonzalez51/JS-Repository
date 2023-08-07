@@ -18,4 +18,17 @@ const sendToLocalStorage = (data) => {
     window.localStorage.setItem(key, JSON.stringify({ ...data, key: key }));
 };
 
-export { getAllStorageData, sendToLocalStorage };
+const removeItemFromLocalStorage = (key) => {
+    window.localStorage.removeItem(key);
+};
+
+const clearLocalStorage = () => {
+    window.localStorage.clear();
+};
+
+export {
+    getAllStorageData,
+    sendToLocalStorage,
+    removeItemFromLocalStorage,
+    clearLocalStorage,
+};
