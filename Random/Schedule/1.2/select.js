@@ -1,4 +1,7 @@
-const selects = document.querySelectorAll(".form-field > .select");
+import { headers, capitalize } from "./table.js";
+
+const selects = document.querySelectorAll(".form-field > .select.hour");
+const daySelect = document.getElementById("daySelect");
 
 const ROWS = 12;
 
@@ -59,6 +62,22 @@ const initialValues = () => {
 
         select.appendChild(fragment);
     });
+
+    const { ES, EN } = structuredClone(headers);
+    const fragment = document.createDocumentFragment();
+
+    ES.shift();
+    EN.shift();
+
+    ES.map((value, index) => {
+        const option = document.createElement("option");
+        option.textContent = capitalize(value);
+        option.value = EN[index];
+
+        return option;
+    }).forEach((option) => fragment.appendChild(option));
+
+    daySelect.appendChild(fragment);
 };
 
 // ! ---------------------------------------------------------------------------|>
@@ -98,5 +117,7 @@ hourStart.addEventListener("change", (event) => {
 
     dinamicValues(hourEnd, position);
 });
+
+// ! ---------------------------------------------------------------------------|>
 
 export { initialValues, timeStamps, ROWS };

@@ -37,9 +37,9 @@ const tableHeader = () => {
     // * row
     const row = document.createElement("tr");
 
-    const { ES } = headers;
+    const { EN } = headers;
 
-    ES.map((header) => {
+    EN.map((header) => {
         const cell = document.createElement("td");
         cell.textContent = capitalize(header);
 
@@ -92,4 +92,4 @@ const initialTable = () => {
     tableBody();
 };
 
-export { initialTable };
+export { initialTable, headers, capitalize };
