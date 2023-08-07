@@ -10,14 +10,6 @@ const form = document.querySelector(".form");
 const generateTableBtn = document.getElementById("generateTable");
 const clearLocalStorageBtn = document.getElementById("clearLocalStorage");
 
-/**
- * TODO
- *
- * * Take form input > send it to localStorage
- * * create the elements in the table
- *
- */
-
 const clearInputs = (form) => {
     form.querySelectorAll("input").forEach((element) => (element.value = ""));
 };

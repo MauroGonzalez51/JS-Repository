@@ -42,6 +42,7 @@ const tableHeader = () => {
     EN.map((header) => {
         const cell = document.createElement("td");
         cell.textContent = capitalize(header);
+        cell.classList.add("cell");
 
         return cell;
     }).forEach((cell) => row.appendChild(cell));
@@ -71,11 +72,13 @@ const tableBody = () => {
 
             if (!index) {
                 cell.textContent = timeStamp;
+                cell.classList.add("cell");
                 return cell;
             }
 
             cell.classList.add(classTimeStamp);
             cell.classList.add(header);
+            cell.classList.add("cell");
 
             return cell;
         }).forEach((cell) => row.appendChild(cell));
@@ -89,7 +92,10 @@ const tableBody = () => {
 
 const initialTable = () => {
     tableHeader();
+    
     tableBody();
+
+    table.parentElement.classList.add("visible");
 };
 
 export { initialTable, headers, capitalize };

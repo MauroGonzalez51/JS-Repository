@@ -20,9 +20,11 @@ const insertData = (element, { ...args }) => {
     container.setAttribute("data-key", key);
 
     Object.entries(params)
-        .map(([_, value]) => {
+        .map(([_, value], index) => {
             const div = document.createElement("div");
             div.textContent = value;
+
+            if (!index) div.classList.add("subject-name");
 
             return div;
         })

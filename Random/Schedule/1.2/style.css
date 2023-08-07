@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=JetBrains+Mono:wght@100;400&family=Oswald:wght@300;500&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Oswald";
+    letter-spacing: 1.5px;
+}
+
+.body {
+    display: flex;
+    min-height: 100dvh;
+    /* background: url("./images/layered-waves-haikei.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+
+    background: rgb(126, 24, 207);
+    background: linear-gradient(
+        0deg,
+        rgba(126, 24, 207, 0.8925945378151261) 3%,
+        rgba(182, 110, 231, 1) 24%,
+        rgba(137, 133, 152, 0.8449754901960784) 97%
+    );
+}
+
+.main-container {
+    width: 100%;
+}
+
+.form-container {
+    padding: 1.5rem;
+    margin: 3rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    border-radius: 0.8rem;
+    background: linear-gradient(145deg, #fefefe, #d5d5d5);
+    box-shadow: 35px 35px 63px #adadad, -35px -35px 63px #ffffff;
+    gap: 0.8rem;
+}
+
+.form-container {
+    font-weight: 300;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    flex-grow: 1;
+}
+
+.form-field {
+    position: relative;
+    flex-grow: 2;
+}
+
+.form-field__input {
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    height: 3rem;
+    border-radius: 0.8rem;
+    outline: none !important;
+    border: 2px solid rgba(126, 24, 207, 0.8925945378151261);
+}
+
+.form-field__label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.label-animation {
+    top: 0;
+    left: 0.6rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.2rem;
+    background: #fafafa;
+    border: 1px solid rgba(126, 24, 207, 0.8925945378151261);
+}
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    flex-grow: 1;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    border: 2px solid transparent;
+    background: rgba(158, 8, 218, 0.845);
+    color: #fff;
+}
+
+.select {
+    border-bottom: 2px solid rgba(126, 24, 207, 0.8925945378151261);
+    padding: 0 0.6rem;
+    font-weight: 300;
+}
+
+option {
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.result {
+    opacity: 0;
+    transition: opacity 1.5s;
+    border-radius: 0.8rem;
+    background: linear-gradient(145deg, #fefefe, #dacfcf);
+    padding: 1.5rem;
+    margin: 3rem 2rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table > * {
+    font-weight: 300;
+    text-align: center;
+}
+
+thead > * {
+    font-weight: 500;
+    color: rgb(125, 24, 207);
+}
+
+.subject-name {
+    font-weight: 500;
+    color: rgb(125, 24, 207);
+}
+
+.cell {
+    border: 2px solid #d7b1f5;
+}
+
+.visible {
+    opacity: 1;
+}

@@ -3,9 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
         <title>Document</title>
     </head>
-    <body>
+    <body class="body">
         <div class="main-container">
             <div class="form-container">
                 <form action="" class="form">
@@ -26,7 +27,7 @@
                     </div>
 
                     <div class="form-field select-container">
-                        <label for="text">Valor</label>
+                        <label for="text">Hora Inicio</label>
                         <select
                             name="select"
                             id="hourStart"
@@ -35,7 +36,7 @@
                     </div>
 
                     <div class="form-field select-container">
-                        <label for="text">Valor</label>
+                        <label for="text">Hora Final</label>
                         <select
                             name="select"
                             id="hourEnd"
@@ -44,7 +45,7 @@
                     </div>
 
                     <div class="form-field select-container">
-                        <label for="text">Valor</label>
+                        <label for="text">Dia</label>
                         <select
                             name="select"
                             id="daySelect"
@@ -59,7 +60,7 @@
                             class="form-field__input"
                         />
                         <label for="text" class="form-field__label"
-                            >salon</label
+                            >Salon</label
                         >
                     </div>
 
@@ -73,9 +74,26 @@
             </div>
 
             <div class="result">
-                <table class="table" border="1"></table>
+                <table class="table"></table>
             </div>
         </div>
+
+        <script>
+            const formFieldAll = document.querySelectorAll(".form-field");
+
+            formFieldAll.forEach((field) => {
+                const [input, label] = field.children;
+
+                input.addEventListener("focus", () => {
+                    label.classList.add("label-animation");
+                });
+
+                input.addEventListener('blur', () => {
+                    if (!input.value)
+                        label.classList.remove("label-animation");
+                })
+            });
+        </script>
 
         <script type="module" src="script.js"></script>
     </body>
