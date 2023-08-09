@@ -26,9 +26,19 @@ const clearLocalStorage = () => {
     window.localStorage.clear();
 };
 
+const sendColorsToLocalStorage = (data) => {
+    window.localStorage.setItem("colors", JSON.stringify(data));
+};
+
+const getColors = () => {
+    return window.localStorage.getItem("colors");
+};
+
 export {
     getAllStorageData,
     sendToLocalStorage,
     removeItemFromLocalStorage,
     clearLocalStorage,
+    sendColorsToLocalStorage,
+    getColors
 };
