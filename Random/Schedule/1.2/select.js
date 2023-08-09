@@ -63,16 +63,15 @@ const initialValues = () => {
         select.appendChild(fragment);
     });
 
-    const { ES, EN } = structuredClone(headers);
+    const { EN } = structuredClone(headers);
     const fragment = document.createDocumentFragment();
 
-    ES.shift();
     EN.shift();
 
-    ES.map((value, index) => {
+    EN.map((value) => {
         const option = document.createElement("option");
         option.textContent = capitalize(value);
-        option.value = EN[index];
+        option.value = value;
 
         return option;
     }).forEach((option) => fragment.appendChild(option));
