@@ -21,6 +21,16 @@ const defaultColors = {
 const setElements = (data) => {
     const { primary, secondary, terceary } = JSON.parse(data);
 
+    if (document.startViewTransition()) {
+        document.startViewTransition(() => {
+            document.documentElement.style.setProperty("--primary-color", primary);
+            document.documentElement.style.setProperty("--secondary-color", secondary);
+            document.documentElement.style.setProperty("--terceary-color", terceary);
+        });
+
+        return;
+    }
+
     document.documentElement.style.setProperty("--primary-color", primary);
     document.documentElement.style.setProperty("--secondary-color", secondary);
     document.documentElement.style.setProperty("--terceary-color", terceary);
