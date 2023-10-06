@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body class="body">
+        <div class="container">
+            <form class="form">
+                <div class="form-field">
+                    <label for="text" id="question"
+                        >Will you go out with me?</label
+                    >
+                </div>
+
+                <div class="buttons">
+                    <div class="form-field">
+                        <button class="button" id="true">Yes</button>
+                    </div>
+
+                    <div class="form-field">
+                        <button class="button" id="false" disabled>No</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+        ></script>
+
+        <script type="text/javascript">
+            emailjs.init("Xsvrl6r4gUXavKLRF");
+        </script>
+
+        <script>
+            const CONFIRMATION_MESSAGE = "I knew it :3";
+
+            const trueButton = document.getElementById("true");
+
+            const falseButton = document.getElementById("false");
+
+            const { parentElement: falseBox } = falseButton;
+
+            const sendEmail = () => {
+                emailjs
+                    .send("service_82p4lo9", "template_slqk7wg", {
+                        to_name: "ME",
+                        message: "Somebody has clicked the button",
+                    })
+                    .then((response) => console.log(response))
+                    .catch((error) => console.log(error));
+            };
+
+            trueButton.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                document.startViewTransition(() => {
+                    let fragment = document.createDocumentFragment();
+
+                    let container = document.querySelector(".container");
+
+                    Array.from(container.children).forEach((child) =>
+                        container.removeChild(child)
+                    );
+
+                    let span = document.createElement("span");
+                    span.classList.add("message");
+                    span.textContent = CONFIRMATION_MESSAGE;
+
+                    fragment.appendChild(span);
+                    container.appendChild(fragment);
+                });
+
+                sendEmail();
+            });
+
+            const updateElement = (event) => {
+                falseButton.style.position = "absolute";
+                falseButton.style.left = `${Math.random() * 90}%`;
+                falseButton.style.top = `${Math.random() * 90}%`;
+            };
+
+            falseBox.addEventListener("mouseenter", updateElement);
+        </script>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                position: relative;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+                max-width: 600px;
+            }
+
+            .form {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+            }
+
+            .form > * {
+                width: 100%;
+            }
+
+            .form-field {
+                display: flex;
+                justify-content: center;
+            }
+
+            .form-field:has(#question) {
+                font-size: 3rem;
+                display: flex;
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .buttons > .form-field {
+                padding: 4rem;
+                width: 40%;
+            }
+
+            .button {
+                padding: 1rem 2rem;
+                aspect-ratio: 16 / 9;
+                border-radius: 0.4rem;
+                background: #45e;
+                color: #fff;
+                border: 2px solid #67b;
+                transition: all 0.3s;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+            }
+
+            .message {
+                font-size: 3rem;
+            }
+        </style>
+    </body>
+</html>

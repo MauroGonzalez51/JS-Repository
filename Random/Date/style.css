@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', system-ui;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh;
+}
+
+#app {
+    font-size: 4rem;
+}
+
+#days {
+    color: rgb(218, 16, 16);
+}
